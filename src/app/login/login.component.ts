@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { DatabaseService } from '../Services/database.service';
 
 @Component({
   selector: 'app-login',
@@ -17,46 +19,43 @@ userdetails:any={
   1002:{acno:1002,username:'arun',password:123,balance:0},
   1003:{acno:1003,username:'mega',password:123,balance:0}
 }
+constructor(private router:Router,private ds:DatabaseService) { }
 
-// login(){
-//  var acno=this.acno
-//  var psw=this.psw
-//  var userdetails=this.userdetails
+login(){
+ var acno=this.acno
+ var psw=this.psw
 
-//  if(acno in userdetails){
-//   if(psw==userdetails[acno]["password"]){
-//     alert('login success')
-//   }
-//   else{
-//     alert('incorrect password')
-//   }
-//  }
-//  else{
-//   alert('incorrect username')
-//  }
-// }
-
-login(a:any,b:any){
-  this.acno=a.value
-  this.psw=b.value
-  
-  
-  var acno=this.acno
-  var psw=this.psw
-  var userdetails=this.userdetails
- 
-  if(acno in userdetails){
-   if(psw==userdetails[acno]["password"]){
-     alert('login success')
-   }
-   else{
-     alert('incorrect password')
-   }
+  const result=this.ds.login(acno,psw)
+  if(result){
+    alert('login success')
+    this.router.navigateByUrl('dashboard')
   }
   else{
-   alert('incorrect username')
+    alert('incorrect username or password')
   }
  }
+
+// login(a:any,b:any){
+//   this.acno=a.value
+//   this.psw=b.value
+  
+  
+//   var acno=this.acno
+//   var psw=this.psw
+//   var userdetails=this.userdetails
+ 
+//   if(acno in userdetails){
+//    if(psw==userdetails[acno]["password"]){
+//      alert('login success')
+//    }
+//    else{
+//      alert('incorrect password')
+//    }
+//   }
+//   else{
+//    alert('incorrect username')
+//   }
+//  }
 // acnochange(event:any){
 
 //   this.acno=event.target.value
