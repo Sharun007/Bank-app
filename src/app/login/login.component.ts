@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatabaseService } from '../Services/database.service';
 
@@ -19,19 +20,26 @@ userdetails:any={
   1002:{acno:1002,username:'arun',password:123,balance:0},
   1003:{acno:1003,username:'mega',password:123,balance:0}
 }
-constructor(private router:Router,private ds:DatabaseService) { }
+constructor(private router:Router,private ds:DatabaseService,private fb:FormBuilder) { }
+
+loginForm=this.fb.group({acno:['',[Validators.required,Validators.pattern('[0-9]+')]],psw:['',[Validators.required,Validators.pattern('[0-9]+')]]})
 
 login(){
- var acno=this.acno
- var psw=this.psw
+ var acno=this.loginForm.value.acno
+ var psw=this.loginForm.value.psw
 
-  const result=this.ds.login(acno,psw)
+  if(this.loginForm.valid){
+    const result=this.ds.login(acno,psw)
   if(result){
     alert('login success')
     this.router.navigateByUrl('dashboard')
   }
   else{
     alert('incorrect username or password')
+  }
+  }
+  else{
+    alert('invalid form')
   }
  }
 
