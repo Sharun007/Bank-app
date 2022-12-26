@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DatabaseService } from '../Services/database.service';
 
 @Component({
@@ -8,17 +9,24 @@ import { DatabaseService } from '../Services/database.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  acno=''
-  psw=''
-  amnt=''
+  // acno=''
+  // psw=''
+  // amnt=''
+  
+  dateandtime:any
 
-  acno1=''
-  psw1=''
-  amnt1=''
+  acno:any
+
+  // acno1=''
+  // psw1=''
+  // amnt1=''
 
   user=''
 
-constructor(private ds:DatabaseService,private fb:FormBuilder){
+constructor(private ds:DatabaseService,private fb:FormBuilder,private router:Router){
+  
+  this.dateandtime=new Date()
+
   //access username
   this.user=this.ds.currentuser
 }
@@ -26,6 +34,13 @@ constructor(private ds:DatabaseService,private fb:FormBuilder){
 depositForm=this.fb.group({acno1:['',[Validators.required,Validators.pattern('[0-9]+')]],psw1:['',[Validators.required,Validators.pattern('[0-9]+')]],amnt1:['',[Validators.required,Validators.pattern('[0-9]+')]]})
 
 withdrawForm=this.fb.group({acno2:['',[Validators.required,Validators.pattern('[0-9]+')]],psw2:['',[Validators.required,Validators.pattern('[0-9]+')]],amnt2:['',[Validators.required,Validators.pattern('[0-9]+')]]})
+
+ngOnInit(): void{
+  if(!localStorage.getItem('currentacno')){
+    alert('please login first')
+    this.router.navigateByUrl('')
+  }
+}
 
 
   deposit(){
@@ -61,6 +76,16 @@ withdrawForm=this.fb.group({acno2:['',[Validators.required,Validators.pattern('[
     alert('invalid form')
   }
    
+  }
+  logout(){
+    localStorage.removeItem('currentuser')
+    localStorage.removeItem('currentacno')
+    this.router.navigateByUrl('')
+
+  }
+  deleteconfirm(){
+    this.acno=JSON.parse(localStorage.getItem('currentacno') || '')
+
   }
 }
 

@@ -43,7 +43,7 @@ Dependency Injection
 
  ng g s servicename      
 
- Angular directives
+ Angular directives - to manage DOM in Angular
  --------------------
 
  1.structural directives- to handle structured datas(collections i.e,arrays,objects) in view(html) of a component 
@@ -51,6 +51,12 @@ Dependency Injection
       -ngFor   -can directly apply in html to access elements from array    
 
       -ngIf    -to check a conditon in html
+
+ 2.Component directive
+
+ 3.Attribute directive - to apply  attributes to DOM
+                         
+                          - [ngClass]
 
 
  Form Validation in Angular
@@ -95,6 +101,17 @@ Local storage in Angular
 -access    : localStorage.getItem()
 -delete    : localStorage.removeItem()
 
+
+Parent Child Components communication in Angular
+-------------------------------------------------
+
+
               
+ Date in Angular
+ ----------------
+
+ Date  - class
+
+ -create an object of class Date to access Date and Time             
 
 

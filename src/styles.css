@@ -3,3 +3,7 @@ body{
     background-image: url("./assets/bitcoin\ 2.jpg");
     background-size: cover;
 }
+
+.style{
+    opacity: 0;
+}
