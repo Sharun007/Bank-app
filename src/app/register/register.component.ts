@@ -24,22 +24,21 @@ export class RegisterComponent {
    var psw=this.registerForm.value.psw
 
      if(this.registerForm.valid){
-      const result=this.ds.register(acno,uname,psw)
+      this.ds.register(acno,uname,psw).subscribe((result:any)=>{
+        alert(result.message)
+        this.router.navigateByUrl('')
 
-      if(result){
-       alert('Registration success')
-       this.router.navigateByUrl('')
+      },
+      result=>{
+        alert(result.error.message)
+        this.router.navigateByUrl('')
       }
-      else{
-       alert('user already exists')
-       this.router.navigateByUrl('')
-   
-      }
+      )
      }
+
+
      else{
       alert('invalid form')
      }
-
-
   }
 }

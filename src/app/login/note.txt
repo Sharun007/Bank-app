@@ -32,6 +32,7 @@ html-view
 Dependency Injection
 ---------------------
 -to use a method of a class in another class
+
 -in constructor
 -steps           access pecifier - public/private
                  variable
@@ -105,6 +106,17 @@ Local storage in Angular
 Parent Child Components communication in Angular
 -------------------------------------------------
 
+@Input - parent to child data sharing
+
+@Output - child to parent data sharing
+
+datas only shared via selector of component
+
+User Defined Event Creation In Angular
+---------------------------------------
+
+EventEmitter (angular core)   - class used to craete events
+emit()                        - to start the event
 
               
  Date in Angular
@@ -112,6 +124,56 @@ Parent Child Components communication in Angular
 
  Date  - class
 
- -create an object of class Date to access Date and Time             
+ -create an object of class Date to access Date and Time      
+
+
+Angular Pipe
+-------------
+
+to transform datas into another format
+eg - date Pipe
+
+
+CLIENT SERVER INTEGRATION
+-------------------------
+-------------------------
+
+http request Creation
+---------------------
+
+HttpClientModule   - module used to create http request
+HttpClient         - class
+
+
+
+Asynchronous request in TS
+--------------------------
+
+js - promise  -- resolve then()
+              -- reject  catch()
+
+
+ ts - observable -- resolve  subscribe()
+                 -- reject    catch
+
+  Rxjs   - library used to solve asynchronous code in ts
+
+  (Rxjs - reactive Extension for js)  
+
+
+  Append token in headers of http request
+  ---------------------------------------
+
+  create headers
+
+     HttpHeaders  - class used to create header object
+
+     let headers=new HttpHeaders()
+
+    append token in header object
+
+    headers.append('access-token',token)
+
+
 
 

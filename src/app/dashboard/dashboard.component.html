@@ -6,7 +6,7 @@
       <button (click)="logout()" class=" text-white border border-white btn btn-info" style="border-radius: 20px; margin-left: 90%; margin-top: 1px;">Log out</button>
       <button (click)="deleteconfirm()" class=" text-white border border-white btn btn-danger" style="border-radius: 20px; margin-left: 90%; margin-top: 25px;">Delete</button>
          
-      <app-deleteconfirm [item]="acno"></app-deleteconfirm>
+      <app-deleteconfirm (onDelete)="delete($event)"(onCancel)="oncancel()" [item]="acno"></app-deleteconfirm>
 
     </div>
 <form [ngClass]="acno?'style':''" (ngSubmit)="deposit()" [formGroup]="depositForm">
